@@ -2,6 +2,8 @@
 
 A curated resource for exploring the human E3 ligase landscape, including annotations, classification, and functional insights. This project aims to support discovery of E3 ligases in the research community.
 
+![E3-ome app](docs/e3ome.jpeg)
+
 ## 🔬 Features
 - Curated E3 ligase dataset
 - Updated to include additional E3 ligases
