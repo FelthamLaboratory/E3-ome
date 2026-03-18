@@ -1,6 +1,6 @@
 # E3-ome
 
-A resource for exploring the human E3-ome
+A curated resource for exploring the human E3 ligase landscape, including annotations, classification, and functional insights. This project aims to support discovery of E3 ligases in the research community.
 
 ## 🔬 Features
 - Curated E3 ligase dataset
