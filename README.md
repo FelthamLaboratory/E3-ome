@@ -34,4 +34,5 @@ These links include independent data sources and analyses into E3 ligases. Links
 - [Epithelial Systems Biolology Lab - Human E3 Ubiquitin Ligases](https://esbl.nhlbi.nih.gov/Databases/KSBP2/Targets/Lists/E3-ligases/)
 - [Han Lab – E3 Ligase Landscape (E3Atlas)](https://hanlaboratory.com/E3Atlas/)
 - [Schapira Lab – UbiHub](https://ubihub.thesgc.org/static/UbiHub.html)
+- [Pokrzywa Lab – 2026 Trends in Cell Biology CRL annotation](https://www.cell.com/trends/cell-biology/fulltext/S0962-8924(26)00003-6)
 
