@@ -1,7 +1,6 @@
 # E3-ome
 A curated resource for exploring the human E3 ligase landscape, including annotations, classification, and functional insights. This project aims to support discovery of E3 ligases in the research community.
 
-## 🧬 Why E3-ome?
 E3 ligases represent a large and diverse class of proteins with emerging importance as therapeutic targets. However, the landscape of E3 ligases remains fragmented across datasets and classifications.
 
 E3-ome provides a unified, gene-centric resource to support systematic exploration and discovery in this space.
