@@ -3,7 +3,7 @@ A curated resource for exploring the human E3 ligase landscape, including annota
 
 E3 ligases represent a large and diverse class of proteins with emerging importance as therapeutic targets. However, the landscape of E3 ligases remains fragmented across datasets and classifications.
 
-E3-ome provides a unified, gene-centric resource to support systematic exploration and discovery in this space.
+The E3-ome provides a unified, gene-centric resource to support systematic exploration and discovery in this space.
 
 
 ![E3-ome app](docs/E3-ome.jpg)
