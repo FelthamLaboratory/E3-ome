@@ -11,7 +11,7 @@ E3-ome provides a unified, gene-centric resource to support systematic explorati
 
 ## 🔬 Features
 - Curated E3 ligase dataset
-- Updated to include additional E3 ligases
+- Will be updated periodically
 
 ## 🚀 Web application usage
 - Web app: https://shiny.wehi.edu.au/chua.n/E3app/
