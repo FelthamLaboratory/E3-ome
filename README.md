@@ -23,3 +23,13 @@ The human E3-ome provides a unified, gene-centric resource to support systematic
 We welcome contributions to the human E3-ome annotation. Please contact feltham.r@wehi.edu.au or chua.n@wehi.edu.au .
 
 If you find the E3-ome useful, please consider citing our publication: Chua NK, González-Robles TJ, Reddington CJ, Dudley-Fraser J, Birkinshaw RW, Han J, Solano A, Wong SW, Kochańczyk T, Peter JJ, Nakasone MA, Aust F, Munro J, Tong YH, Iskander J, Abeysekera W, Garnham A, Huckstep H, Ritchie ME, Wertz I, Hymowitz S, Kumar S, Conaway RC, Privé GG, Bullock AN, Babon JJ, Klevit RE, Lorenz S, Ciulli A, Fischer ES, Thomä NH, Nowak RP, Schulman BA, Rapé M, Rittinger K, Pagan JK, Bahlo M, Mackay J, Mace PDM, Lima CD, Hay RT, Komander D, Lechtenberg BC, Joazeiro CAP, Pagano M, Hofmann K, Feltham R. (2026) The E3-ome gene-centric compendium reveals the human E3 ligase landscape. Cell. Accepted for publication.
+
+## 🔗 Additional Links
+
+These links include independent data sources and analyses into E3 ligases. Links will be updated periodically.
+
+- [Ruggles Lab | Pagano Lab – UbiDash](https://ruggleslab.shinyapps.io/UbiDash/)
+- [Schapira Lab – UbiHub](https://ubihub.thesgc.org/static/UbiHub.html)
+- [Han Lab – E3 Ligase Landscape (E3Atlas)](https://hanlaboratory.com/E3Atlas/)
+- [Human E3 Ligome](https://e3-ligome-91adc4.gitlab.io/index.html)
+- [Wei Li...Claudio A. P. Joazeiro (2008), *PLOS ONE*](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0001487)
