@@ -1,4 +1,6 @@
 # The human E3-ome
+**Current E3-ome tally: 672 E3 ligase genes**
+
 A curated resource for exploring the human E3 ligase landscape, including annotations, classification, and functional insights. This project aims to support discovery of E3 ligases in the research community.
 
 E3 ligases represent a large and diverse class of proteins with emerging importance as therapeutic targets. However, the landscape of E3 ligases remains fragmented across datasets and classifications.
