@@ -28,13 +28,13 @@ The datasets provided here include the high-confidence category 1 E3 genes from 
 
 Expression profiles of 672 human E3 ligases across immune cell populations from the Monaco dataset.
 
-[Explore the Monaco immune-cell expression dataset](Expression/Monaco/index3.html)
+[Explore the Monaco immune-cell expression dataset](https://felthamlaboratory.github.io/E3-ome/Expression/Monaco)
 
 ### 🧬 gnomAD genetic-constraint atlas 
 
 Population genetic constraint across the human E3-ome using gnomAD v4.1.1. [
 
-[Explore the E3-ome gnomAD constraint atlas](Genetics/gnomAD/gnomAD/)
+[Explore the E3-ome gnomAD constraint atlas](https://felthamlaboratory.github.io/E3-ome/Genetics/gnomAD/gnomAD/)
 
 ---
 ## 🚀 Web application
