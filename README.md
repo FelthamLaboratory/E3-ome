@@ -34,7 +34,7 @@ Expression profiles of 672 human E3 ligases across immune cell populations from 
 
 Population genetic constraint across the human E3-ome using gnomAD v4.1.1. [
 
-Explore the E3-ome gnomAD constraint atlas](Genetics/gnomAD/gnomAD/)
+[Explore the E3-ome gnomAD constraint atlas](Genetics/gnomAD/gnomAD/)
 
 ---
 ## 🚀 Web application
