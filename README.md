@@ -44,7 +44,7 @@ If you find the E3-ome useful, please consider citing our publication:
 ## 🔗 Additional links
 These links include independent data sources and analyses into E3 ligases. Links will be updated periodically.
 
-- [Ruggles Lab | Pagano Lab – UbiDash](https://ruggleslab.shinyapps.io/UbiDash/) 
+- [Ruggles Lab – UbiDash](https://ruggleslab.shinyapps.io/UbiDash/)
 - [Bhaskara Lab – Human E3 Ligome](https://e3-ligome-91adc4.gitlab.io/index.html)
 - [Joazeiro Lab – 2008 PLOS One E3 annotation](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0001487)
 - [Epithelial Systems Biolology Lab - Human E3 Ubiquitin Ligases](https://esbl.nhlbi.nih.gov/Databases/KSBP2/Targets/Lists/E3-ligases/)
