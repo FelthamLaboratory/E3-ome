@@ -43,8 +43,9 @@ Expression profiles of 672 human E3 ligases across immune cell populations from 
 The datasets provided here include the high-confidence category 1 E3 genes from the E3-ome, together with the full gene curation dataset underlying resource development.
 
 - [Original publication 672 high-confidence E3s](https://github.com/FelthamLaboratory/E3-ome/blob/main/data/high-confidence-672-e3s.xlsx)
-- [Use this for latest post-publication 679 high-confidence E3s](https://github.com/FelthamLaboratory/E3-ome/blob/main/data/High-confidence 20260809.xlsx) 
+- [Use this for latest post-publication 679 high-confidence E3s](https://github.com/FelthamLaboratory/E3-ome/blob/main/data/High-confidence%20260809.xlsx) 
 - [All genes curation](https://github.com/FelthamLaboratory/E3-ome/blob/main/data/all-genes-curation.xlsx)
+
 
 ---
 
