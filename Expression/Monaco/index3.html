@@ -1,0 +1,737 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Immune E3-ome Atlas</title>
+  <script src="data.js"></script>
+  <style>
+    :root {
+      --bg: #f4f1ea;
+      --paper: #fffdf8;
+      --ink: #17211d;
+      --muted: #65706a;
+      --soft: #e7e2d6;
+      --line: #d8d1c3;
+      --teal: #176f6a;
+      --plum: #8d3f5f;
+      --gold: #a97816;
+      --blue: #315f86;
+      --green: #55763e;
+      --clay: #9a5a3a;
+      --violet: #6e5689;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+    a { color: inherit; }
+    .hero {
+      min-height: 48vh;
+      display: grid;
+      align-items: center;
+      padding: 92px clamp(18px, 5vw, 64px) 42px;
+      border-bottom: 1px solid var(--line);
+      background:
+        linear-gradient(130deg, rgba(23, 111, 106, .20), transparent 38%),
+        linear-gradient(20deg, rgba(141, 63, 95, .16), transparent 48%),
+        linear-gradient(180deg, #fffdf8, #f4f1ea 78%);
+    }
+    .nav {
+      position: absolute;
+      top: 18px;
+      left: clamp(18px, 5vw, 64px);
+      right: clamp(18px, 5vw, 64px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 14px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .nav-links { display: flex; gap: 18px; flex-wrap: wrap; }
+    .nav-links a { text-decoration: none; }
+    .hero-inner {
+      width: min(1180px, 100%);
+      display: grid;
+      grid-template-columns: minmax(280px, 1.1fr) minmax(320px, .9fr);
+      gap: clamp(24px, 5vw, 70px);
+      align-items: end;
+    }
+    h1 {
+      margin: 0;
+      max-width: 780px;
+      font-size: clamp(46px, 8vw, 104px);
+      line-height: .9;
+      letter-spacing: 0;
+    }
+    .lede {
+      max-width: 720px;
+      margin: 22px 0 0;
+      color: #46514b;
+      font-size: clamp(16px, 1.9vw, 22px);
+      line-height: 1.42;
+    }
+    .hero-card {
+      border: 1px solid rgba(23, 33, 29, .12);
+      border-radius: 8px;
+      background: rgba(255, 253, 248, .76);
+      backdrop-filter: blur(10px);
+      padding: 18px;
+    }
+    .hero-card h2, .panel h2 {
+      margin: 0;
+      font-size: 18px;
+      letter-spacing: 0;
+    }
+    .hero-card p, .panel p {
+      margin: 9px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.45;
+    }
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 18px;
+    }
+    .metric {
+      padding: 13px;
+      border: 1px solid var(--soft);
+      border-radius: 8px;
+      background: #fffaf0;
+    }
+    .metric strong {
+      display: block;
+      font-size: 30px;
+      line-height: 1;
+      font-variant-numeric: tabular-nums;
+    }
+    .metric span {
+      display: block;
+      margin-top: 7px;
+      color: var(--muted);
+      font-size: 12px;
+      letter-spacing: .04em;
+    }
+    main {
+      padding: 28px clamp(14px, 3.2vw, 48px) 56px;
+    }
+    .toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 5;
+      display: grid;
+      grid-template-columns: minmax(220px, 1.2fr) minmax(190px, .8fr) minmax(170px, .7fr);
+      gap: 12px;
+      padding: 12px 0 18px;
+      background: rgba(244, 241, 234, .92);
+      backdrop-filter: blur(12px);
+    }
+    label {
+      display: grid;
+      gap: 6px;
+      color: var(--muted);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+    input, select {
+      width: 100%;
+      min-height: 42px;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      padding: 8px 11px;
+      background: var(--paper);
+      color: var(--ink);
+      font: inherit;
+    }
+    .type-strip {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin: 0 0 18px;
+    }
+    button.chip {
+      min-height: 34px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 7px 11px;
+      background: var(--paper);
+      color: #36413b;
+      font: inherit;
+      font-size: 13px;
+      cursor: pointer;
+    }
+    button.chip.active {
+      border-color: transparent;
+      color: white;
+      background: var(--teal);
+    }
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(340px, .95fr) minmax(420px, 1.05fr);
+      gap: 16px;
+      align-items: start;
+    }
+    .panel {
+      overflow: hidden;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--paper);
+      box-shadow: 0 12px 30px rgba(23, 33, 29, .05);
+    }
+    .panel.full { grid-column: 1 / -1; }
+    .section-title {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 12px;
+    }
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+      margin: 14px 0;
+    }
+    .mini {
+      padding: 10px;
+      border-radius: 7px;
+      background: #f4f1ea;
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .mini strong {
+      display: block;
+      color: var(--ink);
+      font-size: 18px;
+      line-height: 1.1;
+      margin-bottom: 4px;
+    }
+    .tag {
+      display: inline-block;
+      max-width: 230px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: #e9f0eb;
+      color: #354b42;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      vertical-align: middle;
+    }
+    .gene-title {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin: 0;
+      font-size: clamp(30px, 4vw, 48px);
+      line-height: 1;
+    }
+    .bar-wrap {
+      display: grid;
+      gap: 5px;
+      margin-top: 12px;
+    }
+    .bar-row {
+      display: grid;
+      grid-template-columns: minmax(120px, 205px) 1fr 66px;
+      gap: 9px;
+      align-items: center;
+      min-height: 25px;
+      font-size: 12px;
+    }
+    .bar-label {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .bar-track {
+      height: 14px;
+      overflow: hidden;
+      border-radius: 4px;
+      background: #ece6da;
+    }
+    .bar {
+      height: 100%;
+      min-width: 2px;
+      border-radius: 4px;
+    }
+    .value {
+      text-align: right;
+      color: var(--muted);
+      font-variant-numeric: tabular-nums;
+    }
+    .table-wrap {
+      max-height: 660px;
+      overflow: auto;
+      border-top: 1px solid var(--soft);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+    }
+    th, td {
+      padding: 8px 7px;
+      border-bottom: 1px solid #ebe5da;
+      text-align: left;
+      vertical-align: middle;
+    }
+    th {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      background: var(--paper);
+      color: var(--muted);
+      font-size: 10px;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+    }
+    tbody tr { cursor: pointer; }
+    tbody tr:hover { background: #f7f2e8; }
+    .story-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 12px;
+    }
+    .story-card {
+      padding: 13px;
+      border: 1px solid var(--soft);
+      border-radius: 8px;
+      background: #fffaf0;
+    }
+    .story-card h3 {
+      margin: 0 0 8px;
+      font-size: 14px;
+    }
+    .story-card ol {
+      margin: 0;
+      padding-left: 20px;
+      color: #38443e;
+      font-size: 13px;
+      line-height: 1.55;
+    }
+    .heatmap-shell {
+      display: grid;
+      grid-template-columns: 165px 1fr;
+      grid-template-rows: 18px 170px auto;
+      gap: 12px 8px;
+      overflow-x: auto;
+      padding-top: 4px;
+    }
+    .heatmap-corner {
+      align-self: end;
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+    }
+    .heatmap-axis-title {
+      width: 810px;
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .05em;
+      text-align: center;
+      text-transform: uppercase;
+    }
+    #heatmapColumnLabels {
+      position: relative;
+      width: 810px;
+      height: 170px;
+      align-self: end;
+    }
+    .heatmap-column-label {
+      position: absolute;
+      bottom: 0;
+      left: calc(var(--x) * 27px + 13.5px);
+      width: 156px;
+      color: #17211d;
+      font-size: 11px;
+      line-height: 1.12;
+      text-align: right;
+      transform: translateX(-100%) rotate(90deg);
+      transform-origin: right center;
+      white-space: normal;
+    }
+    #heatmap {
+      image-rendering: pixelated;
+      border: 1px solid var(--line);
+      background: white;
+    }
+    .legend {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .legend-title {
+      font-weight: 700;
+    }
+    .swatch {
+      display: inline-block;
+      width: 16px;
+      height: 10px;
+      margin-right: 5px;
+      border: 1px solid rgba(0,0,0,.08);
+    }
+    .methods {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 18px;
+      align-items: center;
+      margin-top: 16px;
+      padding: 16px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #efe9dd;
+      color: #46514b;
+      font-size: 13px;
+      line-height: 1.45;
+    }
+    .download {
+      display: inline-block;
+      border: 1px solid rgba(23,33,29,.18);
+      border-radius: 7px;
+      padding: 9px 12px;
+      background: var(--paper);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    @media (max-width: 980px) {
+      .hero { min-height: auto; padding-top: 84px; }
+      .hero-inner, .layout, .toolbar, .story-grid, .methods { grid-template-columns: 1fr; }
+      .metrics, .meta-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .nav { align-items: flex-start; }
+      .bar-row { grid-template-columns: minmax(110px, 150px) 1fr 54px; }
+    }
+    @media (max-width: 620px) {
+      .nav-links { display: none; }
+      .metrics, .meta-grid { grid-template-columns: 1fr; }
+      .bar-row { grid-template-columns: 1fr 58px; gap: 4px 8px; }
+      .bar-label { grid-column: 1 / -1; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <nav class="nav">
+      <strong>Immune E3-ome Atlas</strong>
+      <div class="nav-links">
+        <a href="#explore">Explore</a>
+        <a href="#signatures">Signatures</a>
+        <a href="#heatmap-section">Heatmap</a>
+        <a href="#methods">Methods</a>
+      </div>
+    </nav>
+    <div class="hero-inner">
+      <div>
+        <h1>Immune E3-ome Atlas</h1>
+        <p class="lede">Cell-type enrichment of curated human E3 ligases across Monaco immune populations, shown as searchable nTPM expression profiles and immune-cell signatures.</p>
+      </div>
+      <aside class="hero-card">
+        <h2>Atlas Snapshot</h2>
+        <p>E3-ome immune cell expression atlas based on the Monaco dataset (Monaco et al., 2019). This resource extends the published E3-ome framework (Chua et al., 2026).</p>
+        <div class="metrics" id="metrics"></div>
+      </aside>
+    </div>
+  </header>
+
+  <main id="explore">
+    <section class="toolbar">
+      <label>Gene search
+        <input id="geneSearch" list="geneList" value="TNFAIP3" placeholder="Search E3 gene">
+        <datalist id="geneList"></datalist>
+      </label>
+      <label>Immune cell
+        <select id="cellSelect"></select>
+      </label>
+      <label>E3 type
+        <select id="typeSelect"><option value="">All E3 types</option></select>
+      </label>
+    </section>
+
+    <section class="type-strip" id="typeStrip" aria-label="E3 type filters"></section>
+
+    <section class="layout">
+      <article class="panel">
+        <div class="section-title">
+          <div>
+            <h2 class="gene-title" id="geneTitle">Gene</h2>
+            <p id="geneMeta"></p>
+          </div>
+        </div>
+        <div class="meta-grid" id="geneStats"></div>
+        <div class="bar-wrap" id="geneBars"></div>
+      </article>
+
+      <article class="panel" id="signatures">
+        <div class="section-title">
+          <div>
+            <h2 id="cellTitle">Cell-type E3 Signature</h2>
+            <p>Ranked by expression, z-score across immune cells, one-vs-rest enrichment, and specificity.</p>
+          </div>
+        </div>
+        <div class="table-wrap" id="cellTable"></div>
+      </article>
+
+      <article class="panel full">
+        <div class="section-title">
+          <div>
+            <h2>Lineage Highlights</h2>
+            <p>Top E3s for representative lineage groups. Click any gene to redraw the expression profile.</p>
+          </div>
+        </div>
+        <div class="story-grid" id="lineageHighlights"></div>
+      </article>
+
+      <article class="panel full">
+        <div class="section-title">
+          <div>
+            <h2>Most Cell-Type-Biased E3s</h2>
+            <p>Top genes by expression-weighted specificity. Rows are clickable.</p>
+          </div>
+        </div>
+        <div class="table-wrap" id="topTable"></div>
+      </article>
+
+      <article class="panel full" id="heatmap-section">
+        <div class="section-title">
+          <div>
+            <h2>Overview Heatmap</h2>
+            <p>Top 80 E3s by immune-cell enrichment. Columns are the 30 immune cell types; rows are ranked E3s.</p>
+          </div>
+        </div>
+        <div class="heatmap-shell">
+          <div></div>
+          <div class="heatmap-axis-title">Immune cell types</div>
+          <div class="heatmap-corner">E3 genes</div>
+          <div id="heatmapColumnLabels"></div>
+          <canvas id="heatmapLabels" width="165" height="1600"></canvas>
+          <canvas id="heatmap" width="900" height="1600"></canvas>
+        </div>
+        <div class="legend">
+          <span class="legend-title">log2(nTPM + 0.1)</span>
+          <span><span class="swatch" style="background:#f7efd9"></span>Low</span>
+          <span><span class="swatch" style="background:#3d8a82"></span>Medium</span>
+          <span><span class="swatch" style="background:#8d3f5f"></span>High</span>
+        </div>
+      </article>
+    </section>
+
+    <section class="methods" id="methods">
+      <div><strong>Methods note.</strong> Values are Monaco immune-cell nTPM summaries. Enrichment scores describe relative cell-type-biased expression across immune populations and should not be interpreted as replicate-level differential expression. Source files: rna_immune_cell_monaco.tsv, rna_immune_cell_monaco_immune_cells.tsv. The data was obtained from Monaco publication and is based on The Human Protein Atlas version 24.0 and Ensembl version 109. This atlas is an extension of the published E3-ome resource. The analyses presented here were generated using the E3-ome framework together with publicly available datasets. We kindly request that users of this resource cite: Chua NK et al. Cell (2026). The E3-ome gene-centric compendium reveals the human E3 ligase landscape. DOI: 10.1016/j.cell.2026.01.029.</div>
+      <a class="download" href="e3ome_enrichment_scores.csv">Download scores CSV</a>
+    </section>
+  </main>
+
+  <script>
+    const data = window.E3OME_DATA;
+    const cells = data.cells;
+    const genes = data.genes;
+    const geneByName = new Map(genes.map(g => [g.gene, g]));
+    const lineageColors = new Map();
+    const palette = ["#176f6a", "#8d3f5f", "#a97816", "#315f86", "#55763e", "#9a5a3a", "#6e5689", "#59656f"];
+    const lineages = [...new Set(cells.map(c => c.lineage))];
+    const e3Types = [...new Set(genes.map(g => g.e3_type))].sort();
+    lineages.forEach((lineage, i) => lineageColors.set(lineage, palette[i % palette.length]));
+
+    function fmt(value, digits = 2) {
+      return Number(value).toLocaleString(undefined, { maximumFractionDigits: digits });
+    }
+
+    function activeType() {
+      return document.getElementById("typeSelect").value;
+    }
+
+    function displayCellName(name) {
+      return name ? name.charAt(0).toUpperCase() + name.slice(1) : "";
+    }
+
+    function init() {
+      document.getElementById("metrics").innerHTML = [
+        ["Immune cells", data.summary.immune_cells],
+        ["E3s detected", data.summary.e3s_with_expression],
+      ].map(([label, value]) => `<div class="metric"><strong>${value}</strong><span>${label}</span></div>`).join("");
+
+      document.getElementById("geneList").innerHTML = genes.map(g => `<option value="${g.gene}"></option>`).join("");
+      document.getElementById("cellSelect").innerHTML = cells.map(c => `<option value="${c.name}">${displayCellName(c.name)}</option>`).join("");
+      document.getElementById("typeSelect").innerHTML += e3Types.map(c => `<option value="${c}">${c}</option>`).join("");
+
+      renderTypeChips();
+      renderHighlights();
+
+      document.getElementById("geneSearch").addEventListener("change", () => renderGene(document.getElementById("geneSearch").value.trim()));
+      document.getElementById("geneSearch").addEventListener("input", () => {
+        const value = document.getElementById("geneSearch").value.trim().toUpperCase();
+        if (geneByName.has(value)) renderGene(value);
+      });
+      document.getElementById("cellSelect").addEventListener("change", renderCell);
+      document.getElementById("typeSelect").addEventListener("change", () => {
+        syncTypeChips();
+        renderCell();
+        renderTopTable();
+        renderHeatmap();
+      });
+
+      renderGene(document.getElementById("geneSearch").value);
+      renderCell();
+      renderTopTable();
+      renderHeatmap();
+    }
+
+    function renderTypeChips() {
+      const strip = document.getElementById("typeStrip");
+      strip.innerHTML = `<button class="chip active" data-type="" onclick="selectType('')">All E3 types</button>` +
+        e3Types.map(type => `<button class="chip" data-type="${type}" onclick="selectType('${type.replace(/'/g, "\\'")}')">${type}</button>`).join("");
+    }
+
+    function syncTypeChips() {
+      const value = activeType();
+      document.querySelectorAll("#typeStrip .chip").forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.type === value);
+      });
+    }
+
+    function selectType(type) {
+      document.getElementById("typeSelect").value = type;
+      syncTypeChips();
+      renderCell();
+      renderTopTable();
+      renderHeatmap();
+    }
+
+    function renderGene(name) {
+      const requested = name.toUpperCase();
+      const gene = geneByName.get(requested) || genes[0];
+      document.getElementById("geneSearch").value = gene.gene;
+      document.getElementById("geneTitle").innerHTML = `${gene.gene} <span class="tag">${gene.e3_type}</span>`;
+      document.getElementById("geneMeta").innerHTML = `${gene.protein_class}. Highest in <strong>${displayCellName(gene.max_cell)}</strong> (${fmt(gene.max_ntpm)} nTPM).`;
+      document.getElementById("geneStats").innerHTML = [
+        ["Top cell", displayCellName(gene.max_cell)],
+        ["log2 FC vs rest", fmt(gene.log2_fc_vs_rest)],
+        ["Tau specificity", fmt(gene.tau)],
+      ].map(([label, value]) => `<div class="mini"><strong>${value}</strong>${label}</div>`).join("");
+
+      const max = Math.max(...gene.values, 1);
+      const rows = cells.map((cell, i) => ({...cell, value: gene.values[i]})).sort((a, b) => b.value - a.value);
+      document.getElementById("geneBars").innerHTML = rows.map(row => {
+        const width = Math.max(1.5, (row.value / max) * 100);
+        const color = lineageColors.get(row.lineage);
+        return `<div class="bar-row" title="${row.lineage}">
+          <div class="bar-label">${displayCellName(row.name)}</div>
+          <div class="bar-track"><div class="bar" style="width:${width}%;background:${color}"></div></div>
+          <div class="value">${fmt(row.value)}</div>
+        </div>`;
+      }).join("");
+    }
+
+    function renderCell() {
+      const cell = document.getElementById("cellSelect").value || cells[0].name;
+      const type = activeType();
+      const rows = data.top_by_cell[cell].filter(row => !type || row.e3_type === type).slice(0, 50);
+      document.getElementById("cellTitle").textContent = `${displayCellName(cell)} E3 signature`;
+      document.getElementById("cellTable").innerHTML = table(rows, ["rank", "gene", "ntpm", "z", "log2_fc_vs_others", "e3_type"], true);
+    }
+
+    function renderTopTable() {
+      const type = activeType();
+      const rows = genes.filter(g => !type || g.e3_type === type).slice(0, 40);
+      document.getElementById("topTable").innerHTML = table(rows, ["gene", "max_cell", "max_ntpm", "log2_fc_vs_rest", "tau", "enrichment_score", "e3_type"], true);
+    }
+
+    function renderHighlights() {
+      const groups = lineages.slice(0, 6);
+      document.getElementById("lineageHighlights").innerHTML = groups.map(lineage => {
+        const lineageCells = cells.filter(c => c.lineage === lineage).map(c => c.name);
+        const seen = new Set();
+        const picked = [];
+        lineageCells.forEach(cell => {
+          data.top_by_cell[cell].slice(0, 12).forEach(row => {
+            if (!seen.has(row.gene) && picked.length < 6) {
+              seen.add(row.gene);
+              picked.push(row);
+            }
+          });
+        });
+        return `<div class="story-card">
+          <h3 style="color:${lineageColors.get(lineage)}">${lineage}</h3>
+          <ol>${picked.map(row => `<li><a href="#explore" onclick="renderGene('${row.gene}')">${row.gene}</a> <span class="tag">${row.e3_type}</span></li>`).join("")}</ol>
+        </div>`;
+      }).join("");
+    }
+
+    function table(rows, cols, clickable = false) {
+      const headers = {
+        gene: "Gene", max_cell: "Top cell", max_ntpm: "Max nTPM", log2_fc_vs_rest: "log2 FC",
+        tau: "Tau", e3_type: "E3 type", ntpm: "nTPM", z: "z", log2_fc_vs_others: "log2 FC",
+        enrichment_score: "Score", rank: "Rank"
+      };
+      const head = `<thead><tr>${cols.map(c => `<th>${headers[c] || c}</th>`).join("")}</tr></thead>`;
+      const body = rows.map(row => `<tr ${clickable ? `onclick="renderGene('${row.gene}')"` : ""}>${cols.map(c => {
+        const value = row[c];
+        const text = c === "max_cell" ? displayCellName(value) : (typeof value === "number" ? fmt(value) : value);
+        return c === "e3_type" ? `<td><span class="tag">${text}</span></td>` : `<td>${text}</td>`;
+      }).join("")}</tr>`).join("");
+      return `<table>${head}<tbody>${body}</tbody></table>`;
+    }
+
+    function colorRamp(t) {
+      const stops = [[247, 239, 217], [61, 138, 130], [141, 63, 95]];
+      const clamped = Math.max(0, Math.min(1, t));
+      const a = clamped < 0.55 ? stops[0] : stops[1];
+      const b = clamped < 0.55 ? stops[1] : stops[2];
+      const local = clamped < 0.55 ? clamped / 0.55 : (clamped - 0.55) / 0.45;
+      const rgb = a.map((v, i) => Math.round(v + (b[i] - v) * local));
+      return `rgb(${rgb.join(",")})`;
+    }
+
+    function renderHeatmap() {
+      const type = activeType();
+      const selected = genes.filter(g => !type || g.e3_type === type).slice(0, 80);
+      const canvas = document.getElementById("heatmap");
+      const labels = document.getElementById("heatmapLabels");
+      const columnLabels = document.getElementById("heatmapColumnLabels");
+      const cellW = 27, cellH = 18;
+      canvas.width = cells.length * cellW;
+      canvas.height = Math.max(1, selected.length) * cellH;
+      columnLabels.style.width = `${canvas.width}px`;
+      columnLabels.innerHTML = cells.map((cell, x) =>
+        `<span class="heatmap-column-label" style="--x:${x}">${displayCellName(cell.name)}</span>`
+      ).join("");
+      labels.height = canvas.height;
+      const ctx = canvas.getContext("2d");
+      const ltx = labels.getContext("2d");
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ltx.clearRect(0, 0, labels.width, labels.height);
+      ltx.font = "11px ui-sans-serif, system-ui";
+      ltx.textBaseline = "middle";
+      selected.forEach((gene, y) => {
+        ltx.fillStyle = "#17211d";
+        ltx.fillText(gene.gene, 4, y * cellH + cellH / 2);
+        gene.log2_values.forEach((value, x) => {
+          const t = (value + 3.32) / 10;
+          ctx.fillStyle = colorRamp(t);
+          ctx.fillRect(x * cellW, y * cellH, cellW - 1, cellH - 1);
+        });
+      });
+    }
+
+    init();
+  </script>
+</body>
+</html>
