@@ -9,7 +9,7 @@ The human E3-ome provides a unified, gene-centric resource to support systematic
 
 ![E3-ome app](docs/E3-ome.jpg)
 
-
+<img width="698" height="565" alt="E3-ome_abstract" src="https://github.com/user-attachments/assets/7226fa68-9688-4f69-9bc9-a36845051168" />
 
 ---
 
