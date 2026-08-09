@@ -1,5 +1,6 @@
 # 🧬 The human E3-ome
-## Current E3-ome tally: 672 high-confidence E3 ligase genes
+
+**Current E3-ome tally: 679 high-confidence E3 ligase genes**
 
 A curated resource for exploring the human E3 ligase landscape, including annotations, classification, and functional insights. This project aims to support discovery of E3 ligases in the research community.
 
@@ -41,8 +42,8 @@ Expression profiles of 672 human E3 ligases across immune cell populations from 
 
 The datasets provided here include the high-confidence category 1 E3 genes from the E3-ome, together with the full gene curation dataset underlying resource development.
 
-- [High confidence 672 E3s](https://github.com/FelthamLaboratory/E3-ome/blob/main/data/high-confidence-672-e3s.xlsx)
-
+- [Original publication 672 high-confidence E3s](https://github.com/FelthamLaboratory/E3-ome/blob/main/data/high-confidence-672-e3s.xlsx)
+- [Use this for latest post-publication 679 high-confidence E3s](https://github.com/FelthamLaboratory/E3-ome/blob/main/data/high-confidence-672-e3s.xlsx)
 - [All genes curation](https://github.com/FelthamLaboratory/E3-ome/blob/main/data/all-genes-curation.xlsx)
 
 ---
