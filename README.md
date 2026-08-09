@@ -31,6 +31,8 @@ Features:
 
 ### 🛡️ Monaco immune cell atlas
 
+Expression profiles of 672 human E3 ligases across immune cell populations from the Monaco dataset.
+
 [Explore the Monaco immune-cell expression dataset](Expression/Monaco/index3.html)
 
 ---
