@@ -27,11 +27,11 @@ Features:
 * Browse the human E3 ligase landscape
 
 ---
+## 📊 Exploratory atlases
 
-## 📦 Data
-The datasets provided here include the high-confidence category 1 E3 genes from the E3-ome, together with the full gene curation dataset underlying resource development.
-- [High confidence 672 E3s](data/high-confidence-672-e3s.xlsx)
-- [All genes curation](data/all-genes-curation.xlsx)
+### 🛡️ Monaco immune cell atlas
+
+[Explore the Monaco immune-cell expression dataset](Expression/Monaco/index3.html)
 
 ---
 
