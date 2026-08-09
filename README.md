@@ -30,13 +30,12 @@ Expression profiles of 672 human E3 ligases across immune cell populations from 
 
 [Explore the Monaco immune-cell expression dataset](Expression/Monaco/index3.html)
 
-
+---
 ## 🚀 Web application
 
 Explore the companion E3-ome web application:
 
-**E3-ome web app:**
-https://shiny.wehi.edu.au/chua.n/E3app/
+[E3-ome web app](https://shiny.wehi.edu.au/chua.n/E3app/)
 
 The web application reflects the original published E3-ome dataset of 672 high-confidence E3 ligases. The GitHub repository is the authoritative source for the latest E3-ome gene list, post-publication updates and exploratory analyses.
 
