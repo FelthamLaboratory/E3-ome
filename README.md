@@ -37,6 +37,16 @@ Expression profiles of 672 human E3 ligases across immune cell populations from 
 
 ---
 
+## 📦 Data
+
+The datasets provided here include the high-confidence category 1 E3 genes from the E3-ome, together with the full gene curation dataset underlying resource development.
+
+- [High confidence 672 E3s](https://github.com/FelthamLaboratory/E3-ome/blob/main/data/high-confidence-672-e3s.xlsx)
+
+- [All genes curation](https://github.com/FelthamLaboratory/E3-ome/blob/main/data/all-genes-curation.xlsx)
+
+---
+
 ## 📄 Citation
 If you find the E3-ome useful, please consider citing our publication:
 - [Chua NK, González-Robles TJ, Reddington CJ, Dudley-Fraser J, Birkinshaw RW, Han J, Solano A, Wong SW, Kochańczyk T, Peter JJ, Nakasone MA, Aust F, Munro J, Tong YH, Iskander J, Abeysekera W, Garnham A, Huckstep H, Ritchie ME, Wertz I, Hymowitz S, Kumar S, Conaway RC, Privé GG, Bullock AN, Babon JJ, Klevit RE, Lorenz S, Ciulli A, Fischer ES, Thomä NH, Nowak RP, Schulman BA, Rapé M, Rittinger K, Pagan JK, Bahlo M, Mackay J, Mace PDM, Lima CD, Hay RT, Komander D, Lechtenberg BC, Joazeiro CAP, Pagano M, Hofmann K, Feltham R. (2026) The E3-ome gene-centric compendium reveals the human E3 ligase landscape. *Cell*.](https://doi.org/10.1016/j.cell.2026.01.029)
