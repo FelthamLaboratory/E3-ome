@@ -13,19 +13,13 @@ The human E3-ome provides a unified, gene-centric resource to support systematic
 
 ---
 
-## 🚀 Web application
+## 📦 Data
 
-Explore the original E3-ome web application:
+The datasets provided here include the high-confidence category 1 E3 genes from the E3-ome, together with the full gene curation dataset underlying resource development.
 
-**E3-ome web app:**
-https://shiny.wehi.edu.au/chua.n/E3app/
-
-Features:
-
-* Search for specific E3 ligases
-* Filter ligases by classification (e.g. RING, HECT, RBR)
-* Explore curated annotations and functional information
-* Browse the human E3 ligase landscape
+- [Original publication: 672 high-confidence E3s](https://github.com/FelthamLaboratory/E3-ome/raw/refs/heads/main/data/high-confidence-672-e3s.xlsx)
+- [Latest post-publication list: 679 high-confidence E3s](https://github.com/FelthamLaboratory/E3-ome/raw/refs/heads/main/data/High-confidence%2020260809.xlsx)
+- [Complete gene-curation dataset](https://github.com/FelthamLaboratory/E3-ome/raw/refs/heads/main/data/all-genes-curation.xlsx)
 
 ---
 ## 📊 Exploratory atlases
@@ -36,16 +30,22 @@ Expression profiles of 672 human E3 ligases across immune cell populations from 
 
 [Explore the Monaco immune-cell expression dataset](Expression/Monaco/index3.html)
 
----
 
-## 📦 Data
+## 🚀 Web application
 
-The datasets provided here include the high-confidence category 1 E3 genes from the E3-ome, together with the full gene curation dataset underlying resource development.
+Explore the companion E3-ome web application:
 
-- [Original publication: 672 high-confidence E3s](https://github.com/FelthamLaboratory/E3-ome/raw/refs/heads/main/data/high-confidence-672-e3s.xlsx)
-- [Latest post-publication list: 679 high-confidence E3s](https://github.com/FelthamLaboratory/E3-ome/raw/refs/heads/main/data/High-confidence%2020260809.xlsx)
-- [Complete gene-curation dataset](https://github.com/FelthamLaboratory/E3-ome/raw/refs/heads/main/data/all-genes-curation.xlsx)
+**E3-ome web app:**
+https://shiny.wehi.edu.au/chua.n/E3app/
 
+The web application reflects the original published E3-ome dataset of 672 high-confidence E3 ligases. The GitHub repository is the authoritative source for the latest E3-ome gene list, post-publication updates and exploratory analyses.
+
+Features:
+
+* Search for specific E3 ligases
+* Filter ligases by classification (e.g. RING, HECT, RBR)
+* Explore curated annotations and functional information
+* Browse the human E3 ligase landscape
 
 ---
 
