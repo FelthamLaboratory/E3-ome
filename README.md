@@ -4,12 +4,9 @@
 
 A curated resource for exploring the human E3 ligase landscape, including annotations, classification, and functional insights. This project aims to support discovery of E3 ligases in the research community.
 
-E3 ligases represent a large and diverse class of proteins with emerging importance as therapeutic targets. However, the landscape of E3 ligases remains fragmented across datasets and classifications.
+E3 ligases represent a large and diverse class of proteins with emerging importance as therapeutic targets. For the decades, the landscape of E3 ligases remains fragmented across datasets and classifications. The human E3-ome (published in 2026) provides a unified, gene-centric resource to support systematic exploration and discovery in this space.
 
-The human E3-ome provides a unified, gene-centric resource to support systematic exploration and discovery in this space.
-
-
-<img width="698" height="565" alt="E3-ome_abstract" src="https://github.com/user-attachments/assets/7226fa68-9688-4f69-9bc9-a36845051168" />
+<img width="500" height="406" alt="E3-ome_abstract" src="https://github.com/user-attachments/assets/7226fa68-9688-4f69-9bc9-a36845051168" />
 
 ---
 
@@ -26,13 +23,13 @@ The datasets provided here include the high-confidence category 1 E3 genes from 
 
 ### 🛡️ Monaco immune cell atlas
 
-Expression profiles of 672 human E3 ligases across immune cell populations from the Monaco dataset.
+Expression profiles of human E3-ome across immune cell populations from the Monaco dataset.
 
 [Explore the Monaco immune-cell expression dataset](https://felthamlaboratory.github.io/E3-ome/Expression/Monaco/index3.html)
 
 ### 🧬 gnomAD genetic-constraint atlas 
 
-Population genetic constraint across the human E3-ome using gnomAD v4.1.1. [
+Population genetic constraint across the human E3-ome using gnomAD v4.1.1. 
 
 [Explore the E3-ome gnomAD constraint atlas](https://felthamlaboratory.github.io/E3-ome/Genetics/gnomAD/gnomAD/)
 
@@ -74,4 +71,4 @@ These links include independent data sources and analyses into E3 ligases. Links
 ---
 
 ## 📊 Contribution
-We welcome contributions to the human E3-ome annotation. Please contact feltham.r@wehi.edu.au or chua.n@wehi.edu.au .
+We welcome contributions to the human E3-ome annotation. Please contact feltham.r@wehi.edu.au or chua.n@wehi.edu.au.
